@@ -17,4 +17,67 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - **Route 53**: Hosted Zones, AWS Certificate
   - **Certificate Manager**
 ### Procedures
-- 
+- **Set up VPC Manually**
+  - Create VPC
+  - VPC only
+  - IPv4 CIDR manual input
+  - IPv4 CIDR - 10.0.0.0/16
+  - Tenancy - default
+- **Subnets**
+  - Create Subnets
+  - Associate VPC
+  - Create both public and private subnets in different zones for more availability
+- **Internet gateways**
+  - Create Internet gateway
+  - Name gateway and create
+  - Attach gateway to VPC
+- **Route tables**
+  - Create two route tables, one for public subnet one for private subnet
+  - Edit the route table for the public subnet to add new route attaching the internet gateway to allow from everywhere
+  - Associate the public route table with the public subnets in VPC
+- **NAT gateways**
+  - Create NAT gateway
+  - Select a public subnet in your VPC attached to the IGW
+  - Allocate Elastic IP
+  - Create NAT
+- **Route table - Again**
+  - Select private route table
+  - Confirm the subnet association
+  - Go to Routes
+  - Edit Routes
+  - Attach NAT gateway, Destination -> 0.0.0.0/0 (the whole internet)
+- **Instances**
+  - Launch instance
+  - Name instance
+  - Select image (ubuntu 20.04 LTS, free tier)
+  - Select instance type (t2.micro, free tier)
+  - Select key pair
+  - Select Private subnet of VPC and disable public ip
+  - Select suitable security group (a section for this is provided below), for now allow -> HTTP, HTTPS, SSH
+  - Create an instance in the public subnet of VPC as bastion host
+- **Deploy Nodejs App**
+  - **Option 1:** Copy and run deploy-node-app.sh as user data
+  - **Option 2:** Connect to Bastion host, from there connect to private instance, copy, create and run the deploy-node-app.sh script with `./deploy-node-app.sh` 
+  - **Option 3:** Option 2 but commands in "deploy-node-app" being run manually
+- **Setup Load Balancer**
+  - Create Application Load Balancer
+  - Internet facing
+  - Create security group for Load Balancer (LB)
+  - Set inbound rules to allow HTTp and HTTPS (from anywhere)
+  - Create HTTP:80 listener
+  - Create target group
+  - Register private instance in target group
+  - Map Load Balancer with public subnet (Internet gateway attached) in VPC
+- **Security Groups**
+  - Set LB's security group to only accept HTTP and HTTPS, from anywhere
+  - Set instance security group to allow SSH
+  - Set instance security group to only accept HTTP and HTTPS traffic from LB's security group
+- **AMI**
+  - Create an AMI of your ready private instance and use to create a Launch template for your auto scaling group
+  - Enter image name and description and create
+- **Launch Templates**
+  - Create launch template
+  - For Application and OS images
+  - Instance type t2.micro
+  - We'll specify subnet when creating the auto scaling group
+  -  
