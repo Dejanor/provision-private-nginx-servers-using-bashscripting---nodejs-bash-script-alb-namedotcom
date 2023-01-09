@@ -32,22 +32,22 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - Name gateway and create
   - Attach gateway to VPC
 - **Route tables**
-  - Create two route tables, one for public subnet one for private subnet
-  - Edit the route table for the public subnet to add new route attaching the internet gateway to allow from everywhere
+  - Create two Route tables, one for public subnet one for private subnet
+  - Edit the Route table for the public subnet to add new route attaching the internet gateway to allow from everywhere
   - Associate the public route table with the public subnets in VPC
 - **NAT gateways**
   - Create NAT gateway
   - Select a public subnet in your VPC attached to the IGW
   - Allocate Elastic IP
   - Create NAT
-- **Route table - Again**
+- **Route tables - Again**
   - Select private route table
   - Confirm the subnet association
   - Go to Routes
   - Edit Routes
   - Attach NAT gateway, Destination -> 0.0.0.0/0 (the whole internet)
 - **Instances**
-  - Launch instance
+  - Launch instances
   - Name instance
   - Select image (ubuntu 20.04 LTS, free tier)
   - Select instance type (t2.micro, free tier)
@@ -62,22 +62,56 @@ A task to deploy a program that displays the hostname or ip of the server, using
 - **Setup Load Balancer**
   - Create Application Load Balancer
   - Internet facing
-  - Create security group for Load Balancer (LB)
-  - Set inbound rules to allow HTTp and HTTPS (from anywhere)
+  - Create Security Group for Load Balancer (LB)
+  - Set inbound rules to allow HTTP and HTTPS (from anywhere)
   - Create HTTP:80 listener
-  - Create target group
-  - Register private instance in target group
+  - Create Target Group
+  - Register private instance in Target Group
   - Map Load Balancer with public subnet (Internet gateway attached) in VPC
 - **Security Groups**
-  - Set LB's security group to only accept HTTP and HTTPS, from anywhere
-  - Set instance security group to allow SSH
-  - Set instance security group to only accept HTTP and HTTPS traffic from LB's security group
+  - Set LB's Security Group to only accept HTTP and HTTPS, from anywhere
+  - Set instance Security Group to allow SSH
+  - Set instance Security Group to only accept HTTP and HTTPS traffic from LB's Security Group
 - **AMI**
-  - Create an AMI of your ready private instance and use to create a Launch template for your auto scaling group
+  - Create an AMI of your ready private instance and use to create a Launch Template for your Auto Scaling Group
   - Enter image name and description and create
 - **Launch Templates**
-  - Create launch template
+  - Create Launch Template
   - For Application and OS images
   - Instance type t2.micro
-  - We'll specify subnet when creating the auto scaling group
-  -  
+  - Specify Subnets when creating the Auto Scaling Group
+- **Auto Scaling Groups**
+  - Create Auto Scaling Group
+  - Select created Launch Template
+  - Select VPC, select Subnets and Availability zones
+  - Attach to Load Balancer
+  - Select your Target Group
+  - Set Minumun, Desired and Maximum Capacity
+  - Set scaling policies (optional)
+  - Create Auto Scaling Group
+  - Attach already created private instance to Auto Scaling Group 
+- **Route 53**
+  - Create Hosted Zone with domain
+  - Select the Hosted Zone
+  - Create an Alias A record "A - Routes traffic to an IPV4 and some AWS resources"
+  - Route traffic to "Alias to Network Load Balancer"
+  - Choose region (the region that has your VPC and resources)
+  - Simple routing
+  - For root domain leave the subdomain blank
+  - Add another record for the "www" subdomain
+  - create records
+- **Nameservers**
+  - Add the links to AWS nameservers on your domain dashboard with your domain provider
+- **Load Balancers - Again**
+  - Select the Load Balancer
+  - Add Listener
+  - Listener details -> Protocol HTTPS
+  - Action -> Forward
+  - Forward to Target Group
+  - Request new ACM Certificate (free)
+  - Wait for it to be delivered then select the Certificate
+  - Add the Listener
+  - Edit the HTTP:80 Listener
+  - Delete Forward action and add a new Redirect action to -> port 443
+  - Save changes
+- **Check to see if the Domain works. Test Domain, and Load Balancer distribution(by reloading), The Load Balancer should switch between the different servers with their IPs indicating that** 
