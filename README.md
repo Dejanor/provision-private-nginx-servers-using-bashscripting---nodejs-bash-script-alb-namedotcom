@@ -140,9 +140,9 @@ A task to deploy a program that displays the hostname or ip of the server, using
 ![LB](./images/LB.png)
 - **Security Groups**
   - Security group for private instances
-![launch-wizard-1](./images/VPC.png)
+![SG-instance](./images/SG-instance.png)
   - Security group for load balancer
-![ocelotLB-SG](./images/VPC.png)
+![SG-LB](./images/SG-LB.png)
 - **AMI**
 ![AMI](./images/AMI.png)
 - **Launch Templates**
