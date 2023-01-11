@@ -123,17 +123,25 @@ A task to deploy a program that displays the hostname or ip of the server, using
 - **Internet gateways**
 ![IGW](./images/IGW.png)
 - **Route tables**
+  - Route table for public subnet
 ![public Route table](./images/PubRT.png)
+  - Route table for private subnet
 ![private Route table](./images/PrivRT.png)
 - **Instances**
+  - Private instance 1
 ![nginx-wbs-1](./images/nginx-wbs-1.png)
+  - Private instance 2
 ![nginx-wbs-2](./images/nginx-wbs-2.png)
+  - Private instance 3
 ![nginx-wbs-3](./images/nginx-wbs-3.png)
+  - Bastion host
 ![Bastion host](./images/VPC.png)
 - **Load Balancer**
 ![LB](./images/LB.png)
 - **Security Groups**
+  - Security group for private instances
 ![launch-wizard-1](./images/VPC.png)
+  - Security group for load balancer
 ![ocelotLB-SG](./images/VPC.png)
 - **AMI**
 ![AMI](./images/AMI.png)
