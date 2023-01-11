@@ -116,17 +116,32 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - Save changes
 - **Check to see if the Domain works. Test Domain, and Load Balancer distribution(by reloading), The Load Balancer should switch between the different servers with their IPs indicating that** 
 ### Screenshots of the resources created
+<pre>
+
+</pre>
 - **VPC**
 ![VPC](./images/VPC.png)
+<pre>
+
+</pre>
 - **Subnets**
 ![subnets](./images/subnets.png)
+<pre>
+
+</pre>
 - **Internet gateways**
 ![IGW](./images/IGW.png)
+<pre>
+
+</pre>
 - **Route tables**
   - Route table for public subnet
 ![public Route table](./images/PubRT.png)
   - Route table for private subnet
 ![private Route table](./images/PrivRT.png)
+<pre>
+
+</pre>
 - **Instances**
   - Private instance 1
 ![nginx-wbs-1](./images/nginx-wbs-1.png)
@@ -136,19 +151,37 @@ A task to deploy a program that displays the hostname or ip of the server, using
 ![nginx-wbs-3](./images/nginx-wbs-3.png)
   - Bastion host
 ![Bastion host](./images/VPC.png)
+<pre>
+
+</pre>
 - **Load Balancer**
 ![LB](./images/LB.png)
+<pre>
+
+</pre>
 - **Security Groups**
   - Security group for private instances
 ![SG-instance](./images/SG-instance.png)
   - Security group for load balancer
 ![SG-LB](./images/SG-LB.png)
+<pre>
+
+</pre>
 - **AMI**
 ![AMI](./images/AMI.png)
+<pre>
+
+</pre>
 - **Launch Templates**
 ![LT](./images/LT.png)
+<pre>
+
+</pre>
 - **Auto Scaling Groups**
 ![ASG](./images/ASG.png)
+<pre>
+
+</pre>
 - **Route 53**
 ![Route 53](./images/Route-53.png)
 
