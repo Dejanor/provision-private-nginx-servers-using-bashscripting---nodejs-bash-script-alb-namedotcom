@@ -16,7 +16,7 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - **EC2**: Instances, Load Balancers, Target Groups, AMIs, Launch Templates, Elastic IPs, Auto Scaling Groups, Security Groups
   - **Route 53**: Hosted Zones, AWS Certificate
   - **Certificate Manager**
-### Procedures
+### Procedures **(screenshots are below)**
 - **Set up VPC Manually**
   - Create VPC
   - VPC only
@@ -115,3 +115,34 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - Delete Forward action and add a new Redirect action to -> port 443
   - Save changes
 - **Check to see if the Domain works. Test Domain, and Load Balancer distribution(by reloading), The Load Balancer should switch between the different servers with their IPs indicating that** 
+### Screenshots of the resources created
+- **VPC**
+![VPC](./images/VPC.png)
+- **Subnets**
+![subnets](./images/subnets.png)
+- **Internet gateways**
+![IGW](./images/IGW.png)
+- **Route tables**
+![public Route table](./images/PubRT.png)
+![private Route table](./images/PrivRT.png)
+- **Instances**
+![nginx-wbs-1](./images/nginx-wbs-1.png)
+![nginx-wbs-2](./images/nginx-wbs-2.png)
+![nginx-wbs-3](./images/nginx-wbs-3.png)
+![Bastion host](./images/VPC.png)
+- **Load Balancer**
+![LB](./images/LB.png)
+- **Security Groups**
+![launch-wizard-1](./images/VPC.png)
+![ocelotLB-SG](./images/VPC.png)
+- **AMI**
+![AMI](./images/AMI.png)
+- **Launch Templates**
+![LT](./images/LT.png)
+- **Auto Scaling Groups**
+![ASG](./images/ASG.png)
+- **Route 53**
+![Route 53](./images/Route-53.png)
+
+
+
