@@ -184,6 +184,12 @@ A task to deploy a program that displays the hostname or ip of the server, using
 </pre>
 - **Route 53**
 ![Route 53](./images/Route-53.png)
-
+### Demo
+- **server 1**
+![server-1](./images/demo_1.jpg)
+- **server 2**
+![server-2](./images/demo_2.jpg)
+- **server 3**
+![server-3](./images/demo_3.jpg)
 
 
