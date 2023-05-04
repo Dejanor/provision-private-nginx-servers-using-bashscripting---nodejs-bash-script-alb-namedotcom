@@ -23,3 +23,4 @@ sudo cp /$(whoami)/altschool-december-nginx-challenge/eaaladejana.live /etc/ngin
 sudo ln -s /etc/nginx/sites-available/eaaladejana.live /etc/nginx/sites-enabled/eaaladejana.live
 sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
+sudo pm2 list
