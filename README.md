@@ -109,6 +109,7 @@ A task to deploy a program that displays the hostname or ip of the server, using
   - Action -> Forward
   - Forward to Target Group
   - Request new ACM Certificate (free)
+  - Select the Certficate pending validation and create the record required for the validation
   - Wait for it to be delivered then select the Certificate
   - Add the Listener
   - Edit the HTTP:80 Listener
