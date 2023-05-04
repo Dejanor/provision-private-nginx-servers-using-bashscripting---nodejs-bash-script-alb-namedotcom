@@ -26,3 +26,4 @@ sudo systemctl restart nginx
 sudo apt-get update
 sudo apt-get install python3-certbot-nginx -y
 sudo certbot --nginx --agree-tos --no-eff-email --redirect -m dejanaemzy37@gmail.com -d eaaladejana.me -d www.eaaladejana.me
+sudo pm2 list
