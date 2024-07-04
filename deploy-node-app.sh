@@ -19,7 +19,7 @@ pm2 start server.js
 pm2 startup
 mkdir /var/www/eaaladejana.live
 touch /var/www/eaaladejana.live/index.html
-cp /$(whoami)/altschool-december-nginx-challenge/eaaladejana.live /etc/nginx/sites-available/eaaladejana.live || sudo cp /home/$(whoami)/altschool-december-nginx-challenge/eaaladejana.live /etc/nginx/sites-available/eaaladejana.live
+cp /$(whoami)/altschool-december-nginx-challenge/eaaladejana.live /etc/nginx/sites-available/eaaladejana.live || cp /home/$(whoami)/altschool-december-nginx-challenge/eaaladejana.live /etc/nginx/sites-available/eaaladejana.live
 ln -s /etc/nginx/sites-available/eaaladejana.live /etc/nginx/sites-enabled/eaaladejana.live
 rm /etc/nginx/sites-enabled/default
 systemctl restart nginx
